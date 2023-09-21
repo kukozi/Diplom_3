@@ -14,7 +14,7 @@ public class RegistrationPage {
     private final By emailField = By.xpath(".//fieldset[2]//input");
     private final By passwordField = By.name("Пароль");
     private final By registrationButton = By.xpath(".//button[text()='Зарегистрироваться']");
-    private final By enterLink = By.xpath(".//a[text()='Войти']");
+    private final By logInButton = By.xpath(".//a[text()='Войти']");
     private final By errorPassword = By.xpath(".//div[@id='root']//fieldset[3]/div/p");
     private final By eye = By.xpath("//*[@id='root']//fieldset[3]//path");
 
@@ -46,8 +46,8 @@ public class RegistrationPage {
         return new LogInPage(driver);
     }
 
-    public LogInPage enterLinkClick() {
-        driver.findElement(enterLink).click();
+    public LogInPage logInClick() {
+        driver.findElement(logInButton).click();
         return new LogInPage(driver);
     }
 

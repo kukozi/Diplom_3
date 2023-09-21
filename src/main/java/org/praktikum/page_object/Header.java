@@ -19,18 +19,18 @@ public class Header {
         this.driver = driver;
     }
 
-    public DesignerPage clickDesigner() {
+    public ConstructorPage clickConstructor() {
         driver.findElement(designerLink).click();
-        return new DesignerPage(driver);
+        return new ConstructorPage(driver);
     }
 
     public void clickOrderFeed() {
         driver.findElement(orderFeedLink).click();
     }
 
-    public DesignerPage clickLogo() {
+    public ConstructorPage clickLogo() {
         driver.findElement(logoLink).click();
-        return new DesignerPage(driver);
+        return new ConstructorPage(driver);
     }
 
     public LogInPage clickPersonalAccountByAnUnauthorizedUser() {

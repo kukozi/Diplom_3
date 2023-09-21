@@ -35,14 +35,14 @@ public class LogInPage {
 
     }
 
-    public DesignerPage authorization(String email, String password) {
+    public ConstructorPage authorization(String email, String password) {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.elementToBeClickable(buttonEnter));
         emailFielderInput(email);
         passwordFieldInput(password);
         buttonEnterClick();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        return new DesignerPage(driver);
+        return new ConstructorPage(driver);
     }
 
     public RegistrationPage registrationLinkClick() {
