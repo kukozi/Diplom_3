@@ -30,7 +30,6 @@ public abstract class BaseTest extends BaseUrl {
                 throw new RuntimeException("Неизвестный браузер");
         }
     }
-
     @Before
     public void setUpDriver() {
 
