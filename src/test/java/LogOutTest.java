@@ -9,12 +9,11 @@ public class LogOutTest extends BaseTest {
     @Test
     @DisplayName("Account logout")
     public void logOutOfAccount() {
-        driver.get(baseUrl + "/register");
-        RegistrationPage registrationPage = new RegistrationPage(driver);
+        driver.get(baseUrl + "/login");
+        LogInPage logInPage = new LogInPage(driver);
         Header header = new Header(driver);
-        registrationPage.registration(name, email, password)
-                .authorization(email, password);
-        LogInPage logInPage = header.clickPersonalAccountAuthorizedUser().exitButtonClick();
+        logInPage.authorization(email, password);
+        header.clickPersonalAccountAuthorizedUser().exitButtonClick();
         Assert.assertEquals("Вход", logInPage.getTitle());
 
     }
