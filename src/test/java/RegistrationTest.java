@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.praktikum.page_object.LogInPage;
 import org.praktikum.page_object.RegistrationPage;
 
@@ -20,7 +21,8 @@ public class RegistrationTest extends BaseTest {
     @DisplayName("User registration w/ valid data")
     public void registrationTest() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        LogInPage title = registrationPage.registration(name, email, password);
+        String fakeEmail = RandomStringUtils.randomAlphabetic(10) + "@yandex.ru";
+        LogInPage title = registrationPage.registration(name, fakeEmail, password);
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .until(ExpectedConditions.urlContains("login"));
         Assert.assertEquals("Вход", title.getTitle());
