@@ -1,50 +1,53 @@
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
-import org.praktikum.page_object.DesignerPage;
+import org.praktikum.page_object.ConstructorPage;
 import org.praktikum.page_object.Header;
 import org.praktikum.page_object.RecoveryPage;
 import org.praktikum.page_object.RegistrationPage;
 
 public class LogInTest extends BaseTest {
 
-    @Before
-    public void createConditionsTest() {
-        driver.get(baseUrl + "/register");
-        RegistrationPage registrationPage = new RegistrationPage(driver);
-        registrationPage.registration(name, email, password);
-    }
-
     @Test
     @DisplayName("Move to authorization via the header button")
     public void authorizationUserInHeaderTest() {
         driver.get(baseUrl);
         Header header = new Header(driver);
-        DesignerPage designerPage = new DesignerPage(driver);
+        ConstructorPage constructorPage = new ConstructorPage(driver);
         header.clickPersonalAccountByAnUnauthorizedUser()
                 .authorization(email, password);
-        Assert.assertEquals("Оформить заказ", designerPage.getButtonCreatedOrder().getText());
+        Assert.assertEquals("Оформить заказ", constructorPage.getButtonCreatedOrder().getText());
+    }
+
+    @Test
+    @DisplayName("Move to authorization via button on the construction page header")
+    public void authorizationFromTheConstructorPageHeaderTest() {
+        driver.get(baseUrl);
+        ConstructorPage constructorPage = new ConstructorPage(driver);
+        constructorPage.clickAccountButton()
+                .authorization(email, password);
+        Assert.assertEquals("Оформить заказ", constructorPage.getButtonCreatedOrder().getText());
     }
 
     @Test
     @DisplayName("Move to authorization via button on the construction page")
-    public void authorizationFromTheConstructorPageTest() {
+    public void authorizationFromTheConstructorPageListTest() {
         driver.get(baseUrl);
-        DesignerPage designerPage = new DesignerPage(driver);
-        designerPage.clickAccountEnterButton()
+        ConstructorPage constructorPage = new ConstructorPage(driver);
+        constructorPage.clickLogInButton()
                 .authorization(email, password);
-        Assert.assertEquals("Оформить заказ", designerPage.getButtonCreatedOrder().getText());
+        Assert.assertEquals("Оформить заказ", constructorPage.getButtonCreatedOrder().getText());
     }
 
     @Test
     @DisplayName("Move to authorization via link on registration page")
     public void authorizationFromTheRegistrationPage() {
+        driver.get(baseUrl + "/register");
         RegistrationPage registrationPage = new RegistrationPage(driver);
-        DesignerPage designerPage = new DesignerPage(driver);
-        registrationPage.enterLinkClick()
+        ConstructorPage constructorPage = new ConstructorPage(driver);
+        registrationPage.logInClick()
                 .authorization(email, password);
-        Assert.assertEquals("Оформить заказ", designerPage.getButtonCreatedOrder().getText());
+        Assert.assertEquals("Оформить заказ", constructorPage.getButtonCreatedOrder().getText());
     }
 
     @Test
@@ -52,10 +55,10 @@ public class LogInTest extends BaseTest {
     public void authorizationFromThePasswordRecoveryPage() {
         driver.get(baseUrl + "/forgot-password");
         RecoveryPage recoveryPage = new RecoveryPage(driver);
-        DesignerPage designerPage = new DesignerPage(driver);
+        ConstructorPage constructorPage = new ConstructorPage(driver);
         recoveryPage.enterLinkClick()
                 .authorization(email, password);
-        Assert.assertEquals("Оформить заказ", designerPage.getButtonCreatedOrder().getText());
+        Assert.assertEquals("Оформить заказ", constructorPage.getButtonCreatedOrder().getText());
     }
 
 }
