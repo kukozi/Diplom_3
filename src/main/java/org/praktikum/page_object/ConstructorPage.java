@@ -6,15 +6,15 @@ import org.openqa.selenium.WebElement;
 
 public class ConstructorPage {
     private final WebDriver driver;
-    private final By tabRolls = By.xpath(".//div[@id='root']//section[1]/div[1]/div[1]");
+    private final By tabBuns = By.xpath(".//div[@id='root']//section[1]/div[1]/div[1]");
     private final By tabSauces = By.xpath(".//div[@id='root']//section[1]/div[1]/div[2]");
-    private final By tabFilling = By.xpath(".//div[@id='root']//section[1]/div[1]/div[3]");
+    private final By tabFillings = By.xpath(".//div[@id='root']//section[1]/div[1]/div[3]");
     private final By constructorLabel = By.xpath(".//h1[text()='Соберите бургер']");
     private final By buttonAccount = By.xpath(".//button[text()='Войти в аккаунт']");
     private final By buttonCreatedOrder = By.xpath(".//button[text()='Оформить заказ']");
     private final By buttonLogIn = By.xpath(".//button[text()='Войти в аккаунт']");
 
-    private final By rollsName = By.xpath(".//p[text()='Краторная булка N-200i']");
+    private final By bunsName = By.xpath(".//p[text()='Краторная булка N-200i']");
     private final By saucesName = By.xpath(".//p[text()='Соус Spicy-X']");
     private final By fillingName = By.xpath(".//p[text()='Биокотлета из марсианской Магнолии']");
 
@@ -22,8 +22,8 @@ public class ConstructorPage {
         this.driver = driver;
     }
 
-    public void clickTabRolls() {
-        driver.findElement(tabRolls).click();
+    public void clickTabBuns() {
+        driver.findElement(tabBuns).click();
     }
 
     public void clickTabSauces() {
@@ -31,7 +31,7 @@ public class ConstructorPage {
     }
 
     public void clickTabFilling() {
-        driver.findElement(tabFilling).click();
+        driver.findElement(tabFillings).click();
     }
 
     public LogInPage clickAccountButton() {
@@ -53,8 +53,8 @@ public class ConstructorPage {
     public String getConstructorLabelName() {
         return driver.findElement(constructorLabel).getText();
     }
-    public String getRollsName() {
-        return driver.findElement(rollsName).getText();
+    public String getBunsName() {
+        return driver.findElement(bunsName).getText();
     }
 
     public String getSaucesName() {
@@ -64,4 +64,10 @@ public class ConstructorPage {
     public String getFillingName() {
         return driver.findElement(fillingName).getText();
     }
+    public Boolean isCurrentTabBuns() {return driver.findElement(tabBuns)
+            .getAttribute("class").toString().contains("tab_tab_type_current");}
+    public Boolean isCurrentTabSauces() {return driver.findElement(tabSauces)
+            .getAttribute("class").toString().contains("tab_tab_type_current");}
+    public Boolean isCurrentTabFillings() {return driver.findElement(tabFillings)
+            .getAttribute("class").toString().contains("tab_tab_type_current");}
 }

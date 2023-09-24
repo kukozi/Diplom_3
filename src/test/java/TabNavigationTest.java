@@ -12,11 +12,11 @@ public class TabNavigationTest extends BaseTest {
 
     @Test
     @DisplayName("Check bun icon click")
-    public void tabRollsNavigationTest() {
+    public void tabBunsNavigationTest() {
         ConstructorPage constructorPage = new ConstructorPage(driver);
         constructorPage.clickTabFilling();
-        constructorPage.clickTabRolls();
-        Assert.assertEquals("Краторная булка N-200i", constructorPage.getRollsName());
+        constructorPage.clickTabBuns();
+        Assert.assertTrue("Current tab is not Buns", constructorPage.isCurrentTabBuns());
     }
 
     @Test
@@ -24,7 +24,7 @@ public class TabNavigationTest extends BaseTest {
     public void tabSaucesNavigationTest() {
         ConstructorPage constructorPage = new ConstructorPage(driver);
         constructorPage.clickTabSauces();
-        Assert.assertEquals("Соус Spicy-X", constructorPage.getSaucesName());
+        Assert.assertTrue("Current tab is not Sauces", constructorPage.isCurrentTabSauces());
     }
 
     @Test
@@ -32,7 +32,7 @@ public class TabNavigationTest extends BaseTest {
     public void tabFillingNavigationTest() {
         ConstructorPage constructorPage = new ConstructorPage(driver);
         constructorPage.clickTabFilling();
-        Assert.assertEquals("Биокотлета из марсианской Магнолии", constructorPage.getFillingName());
+        Assert.assertTrue("Current tab is not Fillings", constructorPage.isCurrentTabFillings());
     }
 
 }
